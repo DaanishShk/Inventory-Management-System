@@ -13,6 +13,10 @@ public class UserInterface {
 
     public void start() {
 
-        System.out.println();
+
+    }
+
+    private void menu() {
+        System.out.println("1");
     }
 }

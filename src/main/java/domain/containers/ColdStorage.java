@@ -37,5 +37,10 @@ public class ColdStorage implements Container {
         return null;
     }
 
+    @Override
+    public int getID() {
+        return 0;
+    }
+
 
 }

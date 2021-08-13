@@ -36,4 +36,9 @@ public class Misc implements Container {
     public List<Item> getContents() {
         return null;
     }
+
+    @Override
+    public int getID() {
+        return 0;
+    }
 }
