@@ -7,11 +7,10 @@ public class Item {
     private String valType;
     private int qty;
 
-    public Item(String name, double val, String valType, int qty) {
+    public Item(String name, double val, String valType) {
         this.name = name;
         this.val = val;
         this.valType = valType;
-        this.qty = qty;
     }
 
     public String getName() {
@@ -34,24 +33,12 @@ public class Item {
         return valType;
     }
 
-    public double getTotalVal() {
-        return this.qty * this.val;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
     public void setValType(String valType) {
         this.valType = valType;
     }
 
     @Override
     public String toString() {
-        return "Name: " + this.name +"\n"+valType+": "+this.val;
+        return "Name: " + this.name +"\t"+valType+": "+this.val;
     }
 }

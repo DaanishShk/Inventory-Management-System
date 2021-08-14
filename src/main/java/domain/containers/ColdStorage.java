@@ -2,7 +2,7 @@ package domain.containers;
 
 import domain.items.Item;
 
-import java.util.List;
+import java.util.Map;
 
 public class ColdStorage implements Container {
 
@@ -33,8 +33,13 @@ public class ColdStorage implements Container {
     }
 
     @Override
-    public List<Item> getContents() {
+    public Map<Item, Integer> getContents() {
         return null;
+    }
+
+    @Override
+    public void printContents() {
+
     }
 
     @Override

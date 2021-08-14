@@ -1,6 +1,7 @@
 package logic;
 
 import domain.containers.Container;
+import domain.items.Item;
 
 import java.util.ArrayList;
 
@@ -24,14 +25,6 @@ public class Warehouse {
         this.containerList.add(container);
     }
 
-    public boolean removeContainer(int containerID) {
-        Container temp = this.getContainer(containerID);
-        if(temp==null) {
-            return false;
-        }
-        return this.containerList.remove(temp);
-    }
-
     public Container getContainer(int containerID) {
         Container temp = null;
         for(Container c: this.containerList) {
@@ -41,5 +34,22 @@ public class Warehouse {
             }
         }
         return temp;
+    }
+
+    public boolean removeContainer(int containerID) {
+        Container temp = this.getContainer(containerID);
+        if(temp==null) {
+            return false;
+        }
+        return this.containerList.remove(temp);
+    }
+
+    public void printContainers() {
+        System.out.println("Warehouse Contents:\n");
+        int cnt = 1;
+        for(Container c: this.containerList) {
+            System.out.println(cnt+". "+c);
+            cnt++;
+        }
     }
 }
