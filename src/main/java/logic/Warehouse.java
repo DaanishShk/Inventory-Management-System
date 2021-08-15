@@ -1,7 +1,6 @@
 package logic;
 
 import domain.containers.Container;
-import domain.items.Item;
 
 import java.util.ArrayList;
 
@@ -45,7 +44,7 @@ public class Warehouse {
     }
 
     public void printContainers() {
-        System.out.println("Warehouse Contents:\n");
+        System.out.println("Warehouse Contents:");
         int cnt = 1;
         for(Container c: this.containerList) {
             System.out.println(cnt+". "+c);

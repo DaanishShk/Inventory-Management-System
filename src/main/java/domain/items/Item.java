@@ -5,7 +5,6 @@ public class Item {
     private String name;
     private double val;
     private String valType;
-    private int qty;
 
     public Item(String name, double val, String valType) {
         this.name = name;

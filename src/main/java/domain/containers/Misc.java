@@ -23,7 +23,7 @@ public class Misc implements Container {
     }
 
     @Override
-    public void addItem(Item item) {
+    public void addItem(Item item, int qty) {
 
     }
 
