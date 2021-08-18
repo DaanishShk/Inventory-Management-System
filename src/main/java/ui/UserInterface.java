@@ -1,12 +1,11 @@
 package ui;
 
+import java.nio.DoubleBuffer;
 import java.util.Scanner;
 
 import domain.containers.Box;
 import domain.containers.Container;
-import domain.items.Item;
 import logic.Warehouse;
-import ui.buffer.ItemBuffer;
 
 public class UserInterface {
 
@@ -26,22 +25,22 @@ public class UserInterface {
         while(true) {
             System.out.println();
             this.menu();
-            int option = Integer.parseInt(scanner.nextLine());
+            String option = scanner.nextLine().trim();
             System.out.println();
 
-            if(option == 6) {
+            if(option.equals("6")) {
                 break;
             }
 
-            if(option == 1) {
+            if(option.equals("1")) {
                 this.addContainer();
-            } else if(option == 2) {
+            } else if(option.equals("2")) {
                 this.bufferMenu();
-            } else if(option == 3){
+            } else if(option.equals("3")){
                 this.transferItems();
-            } else if(option == 4) {
+            } else if(option.equals("4")) {
                 this.containerContents();
-            } else if(option == 5) {
+            } else if(option.equals("5")) {
                 this.warehouseContents();
             } else {
                 System.out.println("Wrong choice entered. Try again.");
@@ -63,8 +62,12 @@ public class UserInterface {
 
     private void addContainer() {
         System.out.print("Enter maximum weight:");
-        int maxWeight = Integer.parseInt(scanner.nextLine());
-        this.warehouse.addContainer(new Box(maxWeight));
+        try {
+            double maxWeight = Double.parseDouble(scanner.nextLine().trim());
+            this.warehouse.addContainer(new Box(maxWeight));
+        } catch (NumberFormatException e) {
+            System.out.println("Input error. Try again.");
+        }
     }
 
     private void bufferMenu() {
@@ -73,15 +76,23 @@ public class UserInterface {
 
     private void transferItems() {
         System.out.print("Enter container ID:");
-        int id = Integer.parseInt(scanner.nextLine());
-        Container c = this.warehouse.getContainer(id);
-        this.bufferUI.transferToContainer(c);
+        try {
+            int id = Integer.parseInt(scanner.nextLine().trim());
+            Container c = this.warehouse.getContainer(id);
+            this.bufferUI.transferToContainer(c);
+        } catch (NumberFormatException e) {
+            System.out.println("Input error. Try again.");
+        }
     }
 
     private void containerContents() {
-        System.out.print("Enter container ID:");
-        int id = Integer.parseInt(scanner.nextLine());
-        this.warehouse.getContainer(id).printContents();
+        try {
+            System.out.print("Enter container ID:");
+            int id = Integer.parseInt(scanner.nextLine());
+            this.warehouse.getContainer(id).printContents();
+        } catch (NumberFormatException e) {
+            System.out.println("Input error. Try again.");
+        }
     }
 
     private void warehouseContents() {

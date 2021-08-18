@@ -4,6 +4,7 @@ import domain.containers.Container;
 import domain.items.Item;
 import ui.buffer.ItemBuffer;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class BufferInterface {
@@ -20,19 +21,21 @@ public class BufferInterface {
         while(true) {
             System.out.println();
             this.menu();
-            int option = Integer.parseInt(scanner.nextLine());
+            String option = scanner.nextLine().trim();
             System.out.println();
 
-            if(option == 4) {
+            if(option.equals("5")) {
                 break;
             }
 
-            if(option == 1) {
+            if(option.equals("1")) {
                 this.newItem();
-            } else if(option == 2) {
+            } else if(option.equals("2")) {
                 this.removeItem();
-            } else if(option == 3){
+            } else if(option.equals("3")){
                 this.clearItems();
+            } else if(option.equals("4")){
+                this.viewItems();
             } else {
                 System.out.println("Wrong choice entered. Try again.");
             }
@@ -43,7 +46,8 @@ public class BufferInterface {
         System.out.println("1. Create new item");
         System.out.println("2. Remove existing item");
         System.out.println("3. Clear items from buffer");
-        System.out.println("4. Go back");
+        System.out.println("4. View items in buffer");
+        System.out.println("5. Go back");
         System.out.print("Enter choice(num):");
     }
 
@@ -58,9 +62,13 @@ public class BufferInterface {
             System.out.print("Wrong type. Enter again:");
         }
         System.out.print("Enter item value:");
-        int val = Integer.parseInt(scanner.nextLine());
-        this.itemBuffer.add(new Item(name, val, type));
-        System.out.println("Item added to buffer.\n");
+        try {
+            double val = Double.parseDouble(scanner.nextLine().trim());
+            this.itemBuffer.add(new Item(name, val, type));
+            System.out.println("Item added to buffer.\n");
+        } catch (NumberFormatException e) {
+            System.out.print("Input error. Try again.");
+        }
     }
 
     private void removeItem() {
@@ -73,12 +81,23 @@ public class BufferInterface {
         this.itemBuffer.clear();
     }
 
+    private void viewItems() {
+        this.itemBuffer.print();
+    }
+
     public void transferToContainer(Container container) {
         System.out.println("Enter 0 to skip item.");
         for(Item i: this.itemBuffer.getList()) {
             System.out.print("Enter quantity for item "+i.getName()+": ");
-            int qty = Integer.parseInt(scanner.nextLine());
-            if(qty>0) container.addItem(i, qty);
+            while(true) {
+                try {
+                    int qty = Integer.parseInt(scanner.nextLine().trim());
+                    if(qty>0) container.addItem(i, qty);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.print("Input error. Try again.");
+                }
+            }
         }
     }
 }

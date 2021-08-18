@@ -80,7 +80,7 @@ public class Box implements Container {
 
     @Override
     public String toString() {
-        return "ID: "+this.id+"Container Type: "+this.getType()+"\tMaximum Capacity: "+this.maxWeight+" kgs"+"\tCurrent Weight: "+
+        return "ID: "+this.id+"\tContainer Type: "+this.getType()+"\tMaximum Capacity: "+this.maxWeight+" kgs"+"\tCurrent Weight: "+
                 this.getTotalWeight()+" kgs";
     }
 }
