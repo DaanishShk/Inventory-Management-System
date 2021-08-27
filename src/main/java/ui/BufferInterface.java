@@ -1,10 +1,10 @@
 package ui;
 
 import domain.containers.Container;
-import domain.items.Item;
+import domain.items.wieghtBased.Item;
+import domain.items.wieghtBased.dryItem;
 import ui.buffer.ItemBuffer;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class BufferInterface {
@@ -18,6 +18,7 @@ public class BufferInterface {
     }
 
     public void start() {
+        System.out.println("---Item Buffer---");
         while(true) {
             System.out.println();
             this.menu();
@@ -63,8 +64,8 @@ public class BufferInterface {
         }
         System.out.print("Enter item value:");
         try {
-            double val = Double.parseDouble(scanner.nextLine().trim());
-            this.itemBuffer.add(new Item(name, val, type));
+            double weight = Double.parseDouble(scanner.nextLine().trim());
+            this.itemBuffer.add(new dryItem(name, weight));
             System.out.println("Item added to buffer.\n");
         } catch (NumberFormatException e) {
             System.out.print("Input error. Try again.");

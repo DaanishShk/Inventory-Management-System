@@ -1,9 +1,8 @@
 package ui;
 
-import java.nio.DoubleBuffer;
 import java.util.Scanner;
 
-import domain.containers.Box;
+import domain.containers.weightBased.Box;
 import domain.containers.Container;
 import logic.Warehouse;
 
@@ -68,6 +67,7 @@ public class UserInterface {
         } catch (NumberFormatException e) {
             System.out.println("Input error. Try again.");
         }
+        System.out.println("Container added to warehouse.");
     }
 
     private void bufferMenu() {

@@ -1,15 +1,10 @@
 package domain.containers;
 
-import domain.items.Item;
+import domain.items.wieghtBased.Item;
 
-import java.util.Map;
 
-public interface Container {
-    double getMaxCapacity();
-    String getType();
-    void addItem(Item item, int qty);
-    Item getItem(String name);
-    Map<Item, Integer> getContents();
+public interface Container<ItemType extends Item> {
+    boolean addItem(ItemType item, int qty);  //Conflicting with abstract container class
     void printContents();
-    int getID();
+    int getId();
 }

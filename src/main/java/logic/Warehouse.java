@@ -27,7 +27,7 @@ public class Warehouse {
     public Container getContainer(int containerID) {
         Container temp = null;
         for(Container c: this.containerList) {
-            if(c.getID() == containerID) {
+            if(c.getId() == containerID) {
                 temp = c;
                 break;
             }
