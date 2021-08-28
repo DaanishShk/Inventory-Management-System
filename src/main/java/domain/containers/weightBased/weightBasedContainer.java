@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public abstract class abstractContainer<ItemType extends Item> implements Container<ItemType> {
+public abstract class weightBasedContainer<ItemType extends Item> implements Container<ItemType> {
 
     double maxWeight;
     Map<ItemType, Integer> items;
     int id;
     String type;
 
-    public abstractContainer(double maxWeight, String type) {
+    public weightBasedContainer(double maxWeight, String type) {
         this.maxWeight = maxWeight;
         this.items = new HashMap<>();
         this.id = this.hashCode(); // Temporary id using hashcode

@@ -1,21 +1,14 @@
 package domain.containers.liquidBased;
 
-import domain.items.liquidBased.Liquid;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class Barrel {
-
-    private double maxVolume;
-    private Map<Liquid, Integer> items;
-    private int id;
+public class Barrel extends liquidBasedContainer{
 
     public Barrel(double maxVolume) {
-        this.maxVolume = maxVolume;
-        this.items = new HashMap<>();
-        this.id = this.hashCode();
+        super(maxVolume, "Barrel");
     }
 
-
+    @Override
+    public String toString() {
+        return "  ID: "+super.id+"\tType: "+super.type+"\tMaxVolume: "+super.maxVolume
+                +"\tLiquid: "+super.liquid.getName()+"\tVolumeFilled: "+super.liquid;
+    }
 }

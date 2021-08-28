@@ -1,10 +1,10 @@
 package ui;
 
-import java.util.Scanner;
-
-import domain.containers.weightBased.Box;
 import domain.containers.Container;
+import domain.containers.weightBased.Box;
 import logic.Warehouse;
+
+import java.util.Scanner;
 
 public class UserInterface {
 

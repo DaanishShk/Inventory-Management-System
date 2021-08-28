@@ -3,7 +3,7 @@ package domain.containers.weightBased;
 import domain.items.wieghtBased.dryItem;
 
 // Do not extend Container here, use the abstract class itself
-public class Box extends abstractContainer<dryItem> {
+public class Box extends weightBasedContainer<dryItem> {
 
     public Box(double maxWeight) {
         super(maxWeight, "Box");

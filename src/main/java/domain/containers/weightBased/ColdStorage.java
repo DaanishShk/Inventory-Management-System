@@ -2,7 +2,7 @@ package domain.containers.weightBased;
 
 import domain.items.wieghtBased.coldItem;
 
-public class ColdStorage extends abstractContainer<coldItem> {
+public class ColdStorage extends weightBasedContainer<coldItem> {
 
     private double temperature;
 
