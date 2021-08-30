@@ -16,12 +16,12 @@ public class Warehouse {
         this.currCount = 0;
     }
 
-    public void addContainer(Container container) {
+    public boolean addContainer(Container container) {
         if(currCount == maxCount) {
-            System.out.println("Warehouse has reached maximum capacity. Please remove containers to free up space.");
-            return;
+            return false;
         }
         this.containerList.add(container);
+        return true;
     }
 
     public Container getContainer(int containerID) {

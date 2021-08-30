@@ -1,15 +1,18 @@
 package domain.items.liquidBased;
 
+import domain.items.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data @AllArgsConstructor
-public class Liquid {
-    private String name;
-    private double volume;
+public class Liquid extends Item {
+
+    public Liquid(String name) {
+        super(name);
+    }
 
     @Override
     public String toString() {
-        return "Name: "+name+"\tType: liquid"+"\tVolume: "+volume;
+        return "Name: "+name+"\tType: liquid";
     }
 }

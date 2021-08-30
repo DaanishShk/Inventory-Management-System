@@ -1,7 +1,7 @@
 package ui;
 
 import domain.containers.Container;
-import domain.items.wieghtBased.Item;
+import domain.items.Item;
 import domain.items.wieghtBased.dryItem;
 import ui.buffer.ItemBuffer;
 
@@ -55,12 +55,16 @@ public class BufferInterface {
     private void newItem() {
         System.out.print("Enter name:");
         String name = scanner.nextLine();
-        System.out.print("Enter type of item value (Weight or Volume):");
-        String type;
-        while(true) {
-            type = scanner.nextLine();
-            if(type.equalsIgnoreCase("weight") || type.equalsIgnoreCase("volume")) break;
-            System.out.print("Wrong type. Enter again:");
+        System.out.print("Weight(1) or liquid(2) type item:");
+
+        Item item;
+        try {
+            int i = Integer.parseInt(scanner.nextLine().trim());
+            if(i == 1) {
+                System.out.println("Dry(1) or Cold(2) item:");
+                i = Integer.parseInt(scanner.nextLine().trim());
+                if(i == 1) item = new dryItem()
+            }
         }
         System.out.print("Enter item value:");
         try {

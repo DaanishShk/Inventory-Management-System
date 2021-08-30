@@ -1,6 +1,6 @@
 package ui.buffer;
 
-import domain.items.wieghtBased.Item;
+import domain.items.Item;
 
 import java.util.ArrayList;
 

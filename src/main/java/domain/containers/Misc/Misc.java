@@ -1,6 +1,6 @@
 package domain.containers.Misc;
 
-import domain.items.wieghtBased.Item;
+import domain.items.Item;
 
 public class Misc {
 

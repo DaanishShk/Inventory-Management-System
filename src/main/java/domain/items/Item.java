@@ -1,4 +1,4 @@
-package domain.items.wieghtBased;
+package domain.items;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class Item {
-    String name;
-    double weight;
+    protected String name;
 }

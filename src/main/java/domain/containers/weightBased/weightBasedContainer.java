@@ -1,14 +1,14 @@
 package domain.containers.weightBased;
 
 import domain.containers.Container;
-import domain.items.wieghtBased.Item;
+import domain.items.wieghtBased.weightBased;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public abstract class weightBasedContainer<ItemType extends Item> implements Container<ItemType> {
+public abstract class weightBasedContainer<ItemType extends weightBased> implements Container<ItemType> {
 
     double maxWeight;
     Map<ItemType, Integer> items;
@@ -23,7 +23,7 @@ public abstract class weightBasedContainer<ItemType extends Item> implements Con
 
     public abstract String toString();
 
-    public boolean addItem(ItemType item, int qty) {
+    public boolean addItem(ItemType item, double qty) {
 
         if(qty <= 0) return false; // qty must be >0
 
@@ -37,7 +37,7 @@ public abstract class weightBasedContainer<ItemType extends Item> implements Con
         item = this.checkItemInList(item); // If identical object exists update that instead
 
         if(this.getTotalWeight()+qty*item.getWeight() <= this.maxWeight) {
-            this.items.put(item, qty);
+            this.items.put(item, (int)qty);
             return true;
         }
         return false;

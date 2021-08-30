@@ -1,9 +1,10 @@
 package domain.items.wieghtBased;
 
+import domain.items.Item;
 import lombok.Data;
 
 @Data
-public class coldItem extends Item{
+public class coldItem extends weightBased {
 
     private double temperature;
 

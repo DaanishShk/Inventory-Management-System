@@ -1,32 +1,36 @@
 package domain.containers.liquidBased;
 
+import domain.containers.Container;
 import domain.items.liquidBased.Liquid;
 import lombok.Data;
 
 @Data
-public abstract class liquidBasedContainer {
+public abstract class liquidBasedContainer implements Container<Liquid> {
 
     double maxVolume;
+    double currVolume;
     Liquid liquid;
     int id;
     String type;
 
-    public liquidBasedContainer(double maxVolume, String type) {
+    public liquidBasedContainer(double maxVolume, double currVolume, String type) {
         this.maxVolume = maxVolume;
+        this.currVolume = currVolume;
         this.liquid = null;
         this.id = this.hashCode(); // Temporary id using hashcode
     }
 
     public abstract String toString();
 
-    public boolean setLiquid(Liquid liquid) {      // returns true if replaced successfully
+    public boolean setLiquid(Liquid liquid, double volume) {      // returns true if replaced successfully
         if (this.liquid != null) {
             return false;
         }
-        if (liquid.getVolume() > this.maxVolume) {
+        if (volume > this.maxVolume) {
             return false;
         }
         this.liquid = liquid;
+        this.currVolume = volume;
         return true;
     }
 
@@ -35,7 +39,7 @@ public abstract class liquidBasedContainer {
     }
 
     public double amountFilled() {
-        return this.liquid.getVolume();
+        return this.currVolume;
     }
 
     public void printContents() {
@@ -43,7 +47,7 @@ public abstract class liquidBasedContainer {
         if(liquid==null) System.out.println("  EMPTY");
         else {
             System.out.println("  Liquid: "+this.liquid+"\tFraction filled: "
-                    +this.liquid.getVolume()+"/"+this.maxVolume);
+                    +this.currVolume+"/"+this.maxVolume);
         }
     }
 }
