@@ -2,8 +2,10 @@ package domain.items.wieghtBased;
 
 import domain.items.Item;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class coldItem extends weightBased {
 
     private double temperature;
@@ -11,6 +13,10 @@ public class coldItem extends weightBased {
     public coldItem(String name, double weight, double temperature){
         super(name, weight);
         this.temperature = temperature;
+    }
+
+    public coldItem(double temperature) {
+        this(null, 0, temperature);
     }
 
     @Override

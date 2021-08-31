@@ -2,7 +2,10 @@ package ui;
 
 import domain.containers.Container;
 import domain.items.Item;
+import domain.items.liquidBased.Liquid;
+import domain.items.wieghtBased.coldItem;
 import domain.items.wieghtBased.dryItem;
+import domain.items.wieghtBased.weightBased;
 import ui.buffer.ItemBuffer;
 
 import java.util.Scanner;
@@ -57,23 +60,63 @@ public class BufferInterface {
         String name = scanner.nextLine();
         System.out.print("Weight(1) or liquid(2) type item:");
 
-        Item item;
-        try {
-            int i = Integer.parseInt(scanner.nextLine().trim());
-            if(i == 1) {
-                System.out.println("Dry(1) or Cold(2) item:");
-                i = Integer.parseInt(scanner.nextLine().trim());
-                if(i == 1) item = new dryItem()
+        String i = scanner.nextLine().trim();
+
+        if(i.equals("1")) {
+            this.weightBasedItem();
+        } else if (i.equals("2")) {
+            this.liquidBasedItem();
+        } else {
+            System.out.println("Wrong choice. Try again.");
+        }
+    }
+
+    private void weightBasedItem() {
+        weightBased item;
+        System.out.print("Dry(1) or Cold(2) item:");
+        String i = scanner.nextLine().trim();
+
+        System.out.print("Enter name:");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Enter weight:");
+        double weight = this.input();
+
+        if(i.equals("1")) {
+            item = new dryItem();
+        } else if(i.equals("2")) {
+            System.out.print("Enter temperature:");
+            item = new coldItem(input());
+        } else {
+            System.out.println("Wrong choice. Try again.");
+            return;
+        }
+        item.setName(name);
+        item.setWeight(weight);
+
+        this.itemBuffer.add(item);
+        System.out.println("Item added to buffer.\n");
+    }
+
+    private void liquidBasedItem() {
+        System.out.print("Enter name:");
+        String name = scanner.nextLine().trim();
+
+        this.itemBuffer.add(new Liquid(name));
+        System.out.println("Item added to buffer.\n");
+    }
+
+    private double input() {
+        double value;
+        while(true) {
+            try {
+                value = Double.parseDouble(scanner.nextLine().trim());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("Input error. Try again:");
             }
         }
-        System.out.print("Enter item value:");
-        try {
-            double weight = Double.parseDouble(scanner.nextLine().trim());
-            this.itemBuffer.add(new dryItem(name, weight));
-            System.out.println("Item added to buffer.\n");
-        } catch (NumberFormatException e) {
-            System.out.print("Input error. Try again.");
-        }
+        return value;
     }
 
     private void removeItem() {
@@ -94,15 +137,8 @@ public class BufferInterface {
         System.out.println("Enter 0 to skip item.");
         for(Item i: this.itemBuffer.getList()) {
             System.out.print("Enter quantity for item "+i.getName()+": ");
-            while(true) {
-                try {
-                    int qty = Integer.parseInt(scanner.nextLine().trim());
-                    if(qty>0) container.addItem(i, qty);
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.print("Input error. Try again.");
-                }
-            }
+            int qty = (int)this.input();
+            container.addItem(i, qty);
         }
     }
 }
