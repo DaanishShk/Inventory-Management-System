@@ -3,11 +3,13 @@ package domain.containers.weightBased;
 import domain.containers.Container;
 import domain.items.wieghtBased.weightBased;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@NoArgsConstructor
 public abstract class weightBasedContainer<ItemType extends weightBased> implements Container<ItemType> {
 
     double maxWeight;

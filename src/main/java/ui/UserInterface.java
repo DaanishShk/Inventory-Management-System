@@ -1,10 +1,16 @@
 package ui;
 
 import domain.containers.Container;
+import domain.containers.liquidBased.Barrel;
+import domain.containers.liquidBased.liquidBasedContainer;
 import domain.containers.weightBased.Box;
+import domain.containers.weightBased.ColdStorage;
+import domain.containers.weightBased.weightBasedContainer;
 import logic.Warehouse;
 
 import java.util.Scanner;
+
+import static ui.Input.input;
 
 public class UserInterface {
 
@@ -60,14 +66,46 @@ public class UserInterface {
     }
 
     private void addContainer() {
-        System.out.print("Enter maximum weight:");
-        try {
-            double maxWeight = Double.parseDouble(scanner.nextLine().trim());
-            this.warehouse.addContainer(new Box(maxWeight));
-        } catch (NumberFormatException e) {
-            System.out.println("Input error. Try again.");
+        System.out.print("Weight(1) or Liquid(2) type container:");
+        String i = scanner.nextLine().trim();
+
+        if(i.equals("1")) {
+            this.weightBasedContainer();
+        } else if (i.equals("2")) {
+            this.liquidBasedContainer();
+        } else {
+            System.out.println("Wrong choice. Try again.");
         }
-        System.out.println("Container added to warehouse.");
+    }
+
+    private void weightBasedContainer() {
+        weightBasedContainer container;
+        System.out.print("Box(1) or ColdStorage(2) item:");
+        String i = scanner.nextLine().trim();
+
+        if(i.equals("1")) {
+            container = new Box();
+        } else if(i.equals("2")) {
+            System.out.print("Enter temperature:");
+            container = new ColdStorage(input(scanner));
+        } else {
+            System.out.println("Wrong choice. Try again.");
+            return;
+        }
+
+        System.out.print("Enter maximum weight:");
+        container.setMaxWeight(input(scanner));
+
+        this.warehouse.addContainer(container);
+        System.out.println("Container added to warehouse.\n");
+    }
+
+    private void liquidBasedContainer() {
+        System.out.print("Enter maximum volume:");
+        liquidBasedContainer container = new Barrel(input(scanner));
+
+        this.warehouse.addContainer(container);
+        System.out.println("Container added to warehouse.\n");
     }
 
     private void bufferMenu() {

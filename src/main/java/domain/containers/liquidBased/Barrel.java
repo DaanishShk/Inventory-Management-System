@@ -4,8 +4,8 @@ import domain.items.liquidBased.Liquid;
 
 public class Barrel extends liquidBasedContainer{
 
-    public Barrel(double maxVolume, double currVolume) {
-        super(maxVolume, currVolume, "Barrel");
+    public Barrel(double maxVolume) {
+        super(maxVolume, 0, "Barrel");
     }
 
     @Override

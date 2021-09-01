@@ -2,12 +2,14 @@ package domain.containers.weightBased;
 
 import domain.items.wieghtBased.coldItem;
 
+
 public class ColdStorage extends weightBasedContainer<coldItem> {
 
     private double temperature;
 
-    public ColdStorage(double maxWeight) {
-        super(maxWeight, "Insulated");
+    public ColdStorage(double temperature) {
+        super(0, "Insulated");
+        this.temperature = temperature;
     }
 
     @Override

@@ -10,6 +10,8 @@ import ui.buffer.ItemBuffer;
 
 import java.util.Scanner;
 
+import static ui.Input.input;
+
 public class BufferInterface {
 
     private ItemBuffer itemBuffer;
@@ -73,24 +75,26 @@ public class BufferInterface {
 
     private void weightBasedItem() {
         weightBased item;
-        System.out.print("Dry(1) or Cold(2) item:");
-        String i = scanner.nextLine().trim();
 
         System.out.print("Enter name:");
         String name = scanner.nextLine().trim();
 
-        System.out.print("Enter weight:");
-        double weight = this.input();
+        System.out.print("Dry(1) or Cold(2) item:");
+        String i = scanner.nextLine().trim();
 
         if(i.equals("1")) {
             item = new dryItem();
         } else if(i.equals("2")) {
             System.out.print("Enter temperature:");
-            item = new coldItem(input());
+            item = new coldItem(input(scanner));
         } else {
             System.out.println("Wrong choice. Try again.");
             return;
         }
+
+        System.out.print("Enter weight:");
+        double weight = input(scanner);
+
         item.setName(name);
         item.setWeight(weight);
 
@@ -104,19 +108,6 @@ public class BufferInterface {
 
         this.itemBuffer.add(new Liquid(name));
         System.out.println("Item added to buffer.\n");
-    }
-
-    private double input() {
-        double value;
-        while(true) {
-            try {
-                value = Double.parseDouble(scanner.nextLine().trim());
-                break;
-            } catch (NumberFormatException e) {
-                System.out.print("Input error. Try again:");
-            }
-        }
-        return value;
     }
 
     private void removeItem() {
@@ -135,10 +126,19 @@ public class BufferInterface {
 
     public void transferToContainer(Container container) {
         System.out.println("Enter 0 to skip item.");
+
         for(Item i: this.itemBuffer.getList()) {
             System.out.print("Enter quantity for item "+i.getName()+": ");
-            int qty = (int)this.input();
+            int qty = (int)input(scanner);
             container.addItem(i, qty);
         }
+    }
+
+    private void transferWeightTypeContainer() {
+
+    }
+
+    private void transferLiquidTypeContainer() {
+
     }
 }
