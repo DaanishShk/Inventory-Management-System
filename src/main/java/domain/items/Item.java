@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public abstract class Item {
     protected String name;
+
+    public abstract int getType();
 }

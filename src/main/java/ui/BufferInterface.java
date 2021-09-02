@@ -58,8 +58,6 @@ public class BufferInterface {
     }
 
     private void newItem() {
-        System.out.print("Enter name:");
-        String name = scanner.nextLine();
         System.out.print("Weight(1) or liquid(2) type item:");
 
         String i = scanner.nextLine().trim();
@@ -127,18 +125,15 @@ public class BufferInterface {
     public void transferToContainer(Container container) {
         System.out.println("Enter 0 to skip item.");
 
+        int type = TypeChecker.containerType(container.getType());
         for(Item i: this.itemBuffer.getList()) {
-            System.out.print("Enter quantity for item "+i.getName()+": ");
-            int qty = (int)input(scanner);
-            container.addItem(i, qty);
+            if(i.getType() != type) {
+                System.out.println(i.getName()+" skipped as incompatible");
+                continue;
+            }
+            System.out.print("Enter quantity(or volume) for item "+i.getName()+": ");
+            container.addItem(i, input(scanner));
         }
     }
 
-    private void transferWeightTypeContainer() {
-
-    }
-
-    private void transferLiquidTypeContainer() {
-
-    }
 }

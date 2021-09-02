@@ -23,4 +23,9 @@ public class coldItem extends weightBased {
     public String toString() {
         return "Name: "+name+"\tType: cold"+"\tWeight: "+weight+"\tTemperature: "+temperature;
     }
+
+    @Override
+    public int getType() {
+        return 2;
+    }
 }

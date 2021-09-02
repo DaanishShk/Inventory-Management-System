@@ -17,6 +17,7 @@ public abstract class liquidBasedContainer implements Container<Liquid> {
         this.maxVolume = maxVolume;
         this.currVolume = currVolume;
         this.liquid = null;
+        this.type = type;
         this.id = this.hashCode(); // Temporary id using hashcode
     }
 

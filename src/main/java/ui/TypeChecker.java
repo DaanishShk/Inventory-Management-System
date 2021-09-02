@@ -1,23 +1,22 @@
 package ui;
 
+import domain.containers.Container;
+// Class that contains type checking for item storage.
+import java.util.HashMap;
+
 public class TypeChecker {
 
-    private static String[] weightContainers = {"box", "coldstorage"};
-    private static String[] liquidContainers = {"barrel"};
+    private static HashMap<String,Integer> typeMap = new HashMap<>();
 
-    public static int containerType(String type) {
-        for(String s: weightContainers) {
-            if(s.equals(type)) return 1;
-        }
+    static {
+        typeMap.put("box", 1);
 
-        for(String s: liquidContainers) {
-            if(s.equals(type)) return 2;
-        }
+        typeMap.put("insulated", 2);
 
-        return -1;
+        typeMap.put("barrel", 3);
     }
 
-    public static int itemType(String type) {
-
+    public static int containerType(String type) {
+        return typeMap.getOrDefault(type, -1);
     }
 }

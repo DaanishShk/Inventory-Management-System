@@ -12,6 +12,11 @@ public class dryItem extends weightBased {
     }
 
     @Override
+    public int getType() {
+        return 1;
+    }
+
+    @Override
     public String toString() {
         return "Name: "+name+"\tType: dry"+"\tWeight: "+weight;
     }

@@ -15,4 +15,8 @@ public class Liquid extends Item {
     public String toString() {
         return "Name: "+name+"\tType: liquid";
     }
+
+    public int getType() {
+        return 3;
+    }
 }

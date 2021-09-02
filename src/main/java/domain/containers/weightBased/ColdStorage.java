@@ -14,8 +14,8 @@ public class ColdStorage extends weightBasedContainer<coldItem> {
 
     @Override
     public String toString() {
-        return "ID: "+this.id+"\tContainer Type: "+super.type+"\tTemperature: "+this.temperature+"\tMaximum Capacity: "+
-                this.maxWeight+" kgs"+"\tCurrent Weight: "+ this.getTotalWeight()+" kgs";
+        return "ID: "+this.id+"\t\tContainerType: "+super.type+"\t\tTemperature: "+this.temperature
+                +"\t\tMaximum Capacity: "+ this.maxWeight+" kgs"+"\t\tCurrent Weight: "+ this.getTotalWeight()+" kgs";
     }
 
 }

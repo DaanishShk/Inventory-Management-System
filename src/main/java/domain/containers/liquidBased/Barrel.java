@@ -10,8 +10,8 @@ public class Barrel extends liquidBasedContainer{
 
     @Override
     public String toString() {
-        return "  ID: "+super.id+"\tType: "+super.type+"\tMaxVolume: "+super.maxVolume
-                +"\tLiquid: "+super.liquid.getName()+"\tVolumeFilled: "+super.liquid;
+        return "ID: "+super.id+"\t\tContainerType: "+super.type+"\t\tMaxVolume: "+super.maxVolume
+                +"\t\tLiquid: "+(liquid==null?"empty": liquid.getName())+"\t\tVolumeFilled: "+(liquid==null?"NA": liquid);
     }
 
     @Override

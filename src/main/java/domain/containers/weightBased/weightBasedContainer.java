@@ -20,6 +20,7 @@ public abstract class weightBasedContainer<ItemType extends weightBased> impleme
     public weightBasedContainer(double maxWeight, String type) {
         this.maxWeight = maxWeight;
         this.items = new HashMap<>();
+        this.type = type;
         this.id = this.hashCode(); // Temporary id using hashcode
     }
 
