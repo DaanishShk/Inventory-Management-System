@@ -7,6 +7,8 @@ import lombok.Data;
 @Data @AllArgsConstructor
 public class Liquid extends Item {
 
+    private final int type = 3;
+
     public Liquid(String name) {
         super(name);
     }
@@ -17,6 +19,6 @@ public class Liquid extends Item {
     }
 
     public int getType() {
-        return 3;
+        return type;
     }
 }

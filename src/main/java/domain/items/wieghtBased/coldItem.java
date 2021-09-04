@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 public class coldItem extends weightBased {
 
     private double temperature;
+    private final int type = 2;
 
     public coldItem(String name, double weight, double temperature){
         super(name, weight);
@@ -26,6 +27,6 @@ public class coldItem extends weightBased {
 
     @Override
     public int getType() {
-        return 2;
+        return type;
     }
 }

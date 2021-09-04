@@ -7,13 +7,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class dryItem extends weightBased {
 
+    private final int type = 1;
+
     public dryItem(String name, double weight) {
         super(name, weight);
     }
 
     @Override
     public int getType() {
-        return 1;
+        return type;
     }
 
     @Override

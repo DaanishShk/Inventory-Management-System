@@ -126,7 +126,9 @@ public class BufferInterface {
         System.out.println("Enter 0 to skip item.");
 
         int type = TypeChecker.containerType(container.getType());
+        //System.out.println("Type is "+type);
         for(Item i: this.itemBuffer.getList()) {
+            //System.out.println("item type = "+i.getType());
             if(i.getType() != type) {
                 System.out.println(i.getName()+" skipped as incompatible");
                 continue;

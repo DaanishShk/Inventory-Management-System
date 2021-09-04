@@ -10,13 +10,12 @@ public class TypeChecker {
 
     static {
         typeMap.put("box", 1);
-
         typeMap.put("insulated", 2);
-
         typeMap.put("barrel", 3);
     }
 
     public static int containerType(String type) {
-        return typeMap.getOrDefault(type, -1);
+        System.out.println(typeMap);
+        return typeMap.getOrDefault(type.toLowerCase(), -1);
     }
 }

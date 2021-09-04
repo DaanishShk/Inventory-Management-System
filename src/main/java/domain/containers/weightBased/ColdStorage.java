@@ -13,6 +13,12 @@ public class ColdStorage extends weightBasedContainer<coldItem> {
     }
 
     @Override
+    public boolean addItem(coldItem item, double qty) {
+        if(this.temperature > item.getTemperature()) return false;
+        return super.addItem(item, qty);
+    }
+
+    @Override
     public String toString() {
         return "ID: "+this.id+"\t\tContainerType: "+super.type+"\t\tTemperature: "+this.temperature
                 +"\t\tMaximum Capacity: "+ this.maxWeight+" kgs"+"\t\tCurrent Weight: "+ this.getTotalWeight()+" kgs";
