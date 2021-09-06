@@ -4,6 +4,11 @@ import domain.items.Item;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for Items requiring refrigeration. <code>temperature</code> added for further compatibility checks.
+ * @author DaanishShk
+ * @version 1.0
+ */
 @Data
 @NoArgsConstructor
 public class coldItem extends weightBased {

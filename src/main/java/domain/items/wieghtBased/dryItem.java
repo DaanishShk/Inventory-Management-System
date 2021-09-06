@@ -3,6 +3,11 @@ package domain.items.wieghtBased;
 import domain.items.Item;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for Items not sensitive to temperature.
+ * @author DaanishShk
+ * @version 1.0
+ */
 // No use of using Lombok annotations here as no fields
 @NoArgsConstructor
 public class dryItem extends weightBased {

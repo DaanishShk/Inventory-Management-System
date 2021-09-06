@@ -1,5 +1,10 @@
 package ui.buffer;
 
+/** Generic class to wrap ArrayList object
+ * @author DaanishShk
+ * @version 1.0
+ * @since 2021-09-06
+ */
 import java.util.ArrayList;
 
 public class Buffer<T> {
@@ -26,6 +31,9 @@ public class Buffer<T> {
         this.list.clear();
     }
 
+    /**
+     * All contents of the buffer are printed row by row.
+     */
     public void printContents() {
         System.out.println("Buffer Contents:");
         int cnt = 1;
